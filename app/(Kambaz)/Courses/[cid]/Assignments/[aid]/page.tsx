@@ -37,10 +37,10 @@ export default function AssignmentEditor() {
       
           <tr>
           <td align="right" valign="top">
-            <label htmlFor="wd-group">Display Grade As</label>
+            <label htmlFor="wd-display-grade-as">Display Grade As</label>
           </td>
           <td>
-            <select id="wd-group" defaultValue={"PERCENTAGE"}>
+            <select id="wd-display-grade-as" defaultValue={"PERCENTAGE"}>
               <option value="PERCENTAGE">PERCENTAGE </option>
               <option value="GRADE">GRADE</option>
               <option value="GPA">GPA</option>
@@ -77,8 +77,8 @@ export default function AssignmentEditor() {
             <input type="checkbox" name="online-entry" id="wd-media-recordings"/>
             <label htmlFor="wd-media-recordings">Media Recording</label><br/>
 
-            <input type="checkbox" name="online-entry" id="wd-student-annotations"/>
-            <label htmlFor="wd-student-annotations">Student Annotations</label><br/>
+            <input type="checkbox" name="online-entry" id="wd-student-annotation"/>
+            <label htmlFor="wd-student-annotation">Student Annotations</label><br/>
 
             <input type="checkbox" name="online-entry" id="wd-file-upload"/>
             <label htmlFor="wd-file-upload">File Uploads</label><br/>
@@ -93,7 +93,7 @@ export default function AssignmentEditor() {
         <tr>
           <td align="right" valign="top"></td>
           <td>
-            <select id="wd-group" defaultValue={"EVERYONE"}>
+            <select id="wd-assign-to" defaultValue={"EVERYONE"}>
               <option value="EVERYONE">EVERYONE</option>
               <option value="TA">TA</option>
               <option value="FACULTY">FACULTY</option>

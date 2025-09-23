@@ -6,11 +6,11 @@ export default function AssignmentEditor() {
     <div id="wd-assignments-editor">
       <label htmlFor="wd-name">Assignment Name</label>
       <input id="wd-name" defaultValue="A1 - ENV + HTML" /><br /><br />
-      <textarea id="wd-description" rows={10} cols={20} defaultValue={"The assignment is available online Submit a link to the landing page of"}>
+      <textarea id="wd-description" rows={10} cols={20} defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."}>
         
       </textarea>
       <br />
-      <table>
+      <table> 
         <tbody>
         <tr>
           <td align="right" valign="top">
@@ -29,6 +29,21 @@ export default function AssignmentEditor() {
               <option value="ASSIGNMENTS">ASSIGNMENTS</option>
               <option value="GROUPS">GROUPS</option>
               <option value="PROJECT">PROJECT</option>
+
+            </select>
+            
+          </td>
+        </tr>
+      
+          <tr>
+          <td align="right" valign="top">
+            <label htmlFor="wd-group">Display Grade As</label>
+          </td>
+          <td>
+            <select id="wd-group" defaultValue={"PERCENTAGE"}>
+              <option value="PERCENTAGE">PERCENTAGE </option>
+              <option value="GRADE">GRADE</option>
+              <option value="GPA">GPA</option>
 
             </select>
           </td>
@@ -78,7 +93,13 @@ export default function AssignmentEditor() {
         <tr>
           <td align="right" valign="top"></td>
           <td>
-            <input id="wd-assign-to" defaultValue={"Everyone"} />
+            <select id="wd-group" defaultValue={"EVERYONE"}>
+              <option value="EVERYONE">EVERYONE</option>
+              <option value="TA">TA</option>
+              <option value="FACULTY">FACULTY</option>
+
+            </select>
+            
           </td>
         </tr>
 
@@ -110,7 +131,14 @@ export default function AssignmentEditor() {
         </tr>
        
         {/* Complete on your own */}
+        <tr><td><hr /></td>
+        <td><hr /></td>
+        <td><hr /></td>
+        <td><hr /></td>
+        <td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr>
+
         </tbody>
+        
         <tfoot>
           <tr><td align="right" valign="top"></td> 
           <td align="right" valign="top"></td>

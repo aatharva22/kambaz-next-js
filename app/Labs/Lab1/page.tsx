@@ -219,7 +219,7 @@ export default function Lab1() {
           <h5>Text boxes</h5>
           <label>Biography:</label>
           <br />
-          <textarea id="wd-textarea" cols={30} rows={10} value={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod obcaecati,rem ducimus asperiores minima excepturi saepe facilis voluptatibus iure facere, quasi libero. Autem illum natus et nemo provident mollitia id vitae, eos cupiditate? Accusamus non corporis ut rerum exercitationem architecto eligendi delectus, reiciendis excepturi tempora tempore eaque cupiditate vel, nobis ducimus vitae itaque nam odit doloribus modi libero amet! Adipisci fugiat facere repellendus quidem? Vitae repellendus dolorum magni odio delectus optio minus similique temporibus, modi corrupti omnis sequi!"}>    
+          <textarea id="wd-textarea" cols={30} rows={10} defaultValue={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod obcaecati,rem ducimus asperiores minima excepturi saepe facilis voluptatibus iure facere, quasi libero. Autem illum natus et nemo provident mollitia id vitae, eos cupiditate? Accusamus non corporis ut rerum exercitationem architecto eligendi delectus, reiciendis excepturi tempora tempore eaque cupiditate vel, nobis ducimus vitae itaque nam odit doloribus modi libero amet! Adipisci fugiat facere repellendus quidem? Vitae repellendus dolorum magni odio delectus optio minus similique temporibus, modi corrupti omnis sequi!"}>    
           </textarea>
 
           <h5 id="wd-buttons">Buttons</h5>

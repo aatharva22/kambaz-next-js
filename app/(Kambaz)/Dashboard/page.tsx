@@ -1,111 +1,129 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Button, Card, CardBody, CardImg, CardText, CardTitle, Col, Row } from "react-bootstrap";
 export default function Dashboard() {
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
       <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/1234" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpg" width={200} height={150} alt="React" />
-            <div>
-              <h5> CS1234 React JS </h5>
-              <p className="wd-dashboard-course-title">
+        
+          <Row xs={1} md={5} className="g-4">
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/reactjs.jpg" width="100%" height={160} alt="React" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS1234 React JS </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 Full Stack software developer
-              </p>
-              <button> Go </button>
-            </div>
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
           </Link>
-        </div>
-        <br />
-        <div className="wd-dashboard-course"> 
-          <Link href="/Courses/2345" className="wd-dashboard-course-link">
-            <Image src="/images/javascript.jpg" width={200} height={150} alt="JavaScript" />
-            <div>
-              <h5> CS2345 JavaScript </h5>
-              <p className="wd-dashboard-course-title">
+          </Card>
+        </Col>
+
+        
+    
+        
+          
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/2345" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/javascript.jpg" width="100%" height={160} alt="JavaScript" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS2345 JavaScript </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 Full Stack software developer using JS as the language.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
           </Link>
+          </Card>
+        </Col>
 
-        </div>
-        <br />
-
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/3456" className="wd-dashboard-course-link">
-            <Image src="/images/html.jpg" width={200} height={150} alt="HTML" />
-            <div>
-              <h5> CS3456 HTML </h5>
-              <p className="wd-dashboard-course-title">
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/3456" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/html.jpg" width="100%" height={160} alt="HTML" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS3456 HTML </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 Learn the structure of the webpages.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
-          </Link> 
-          </div>
-          <br />
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/4567" className="wd-dashboard-course-link">
-            <Image src="/images/css.jpg" width={200} height={150} alt="HTML" />
-            <div>
-              <h5> CS4567 CSS </h5>
-              <p className="wd-dashboard-course-title">
-                Learn to style and beautify the skeleton of HTML.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
-          </Link> 
-          </div>
-          <br />
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5678" className="wd-dashboard-course-link">
-            <Image src="/images/node3.jpg" width={200} height={150} alt="NodeJS" />
-            <div>
-              <h5> CS5678 NodeJS </h5>
-              <p className="wd-dashboard-course-title">
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
+          </Link>
+          </Card>
+        </Col>
+
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/5678" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/node3.jpg" width="100%" height={160} alt="NodeJS" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS5678 NodeJS </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 Welcome to the server side.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
-          </Link> 
-          </div>
-          <br />
-          <div className="wd-dashboard-course">
-          <Link href="/Courses/6789" className="wd-dashboard-course-link">
-            <Image src="/images/next.jpg" width={200} height={150} alt="NextJS" />
-            <div>
-              <h5> CS6789 NextJS </h5>
-              <p className="wd-dashboard-course-title">
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
+          </Link>
+          </Card>
+        </Col>
+
+
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/6789" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/next.jpg" width="100%" height={160} alt="NextJS" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS6789 NextJS </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 Everything in a nutshell.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
-          </Link> 
-          </div>
-          <br />
-          <div className="wd-dashboard-course">
-          <Link href="/Courses/7891" className="wd-dashboard-course-link">
-            <Image src="/images/redux.jpg" width={200} height={150} alt="Redux" />
-            <div>
-              <h5> CS7891 redux </h5>
-              <p className="wd-dashboard-course-title">
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
+          </Link>
+          </Card>
+        </Col>      
+
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/7891" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/redux.jpg" width="100%" height={160} alt="Redux" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS7891 redux </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                 After all this its important.
-              </p>
-              <button> Go </button>
-              <br />
-            </div>
-          </Link> 
-          </div>
-          <br />
-          <div className="wd-dashboard-course">
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
+          </Link>
+          </Card>
+        </Col> 
+
+          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          <Card>
+          <Link href="/Courses/8912" className="wd-dashboard-course-link text-decoration-none text-dark">
+            <CardImg variant="top" src="/images/cloud.jpg" width="100%" height={160} alt="cloud" />
+            <CardBody>
+              <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden"> CS8912 cloud </CardTitle>
+              <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+                Learn cloud.
+              </CardText>
+              <Button variant="primary"> Go </Button>
+            </CardBody>
+          </Link>
+          </Card>
+        </Col> 
+      </Row>
+
+      
+
+      
+          {/* <div className="wd-dashboard-course">
           <Link href="/Courses/8912" className="wd-dashboard-course-link">
             <Image src="/images/cloud.jpg" width={200} height={150} alt="cloud" />
             <div>
@@ -117,7 +135,7 @@ export default function Dashboard() {
               <br />
             </div>
           </Link> 
-          </div>
+          </div> */}
 
 
       </div>

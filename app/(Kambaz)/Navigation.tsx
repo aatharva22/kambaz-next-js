@@ -15,7 +15,7 @@ export default function KambazNavigation() {
               id="wd-kambaz-navigation">
      <ListGroupItem className="bg-black border-0 text-center" as="a"
               target="_blank" href="https://www.northeastern.edu/" id="wd-neu-link">
-              <img src="/images/NEU" width="75px" alt="Northeastern University" />
+              <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
       </ListGroupItem>
       {/* <a href="https://www.northeastern.edu/" id="wd-neu-link" target="_blank">Northeastern</a><br/> */}
       

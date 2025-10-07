@@ -47,7 +47,7 @@ export default function Profile() {
 
      <Link id="wd-signin-btn"
             href="Signin"
-            className="btn btn-primary w-100 mb-2">
+            className="btn btn-danger w-100 mb-2">
             Sign out </Link>
       
     </div>

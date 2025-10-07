@@ -4,7 +4,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import GreenCheckmark from "./GreenCheckmark";
 export default function ModulesControls() {
  return (
-   <div id="wd-modules-controls" className="text-nowrap float-start">
+   <div id="wd-modules-controls" className="text-nowrap float-end">
      <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-module-btn">
        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
        Module
@@ -14,9 +14,9 @@ export default function ModulesControls() {
          <GreenCheckmark /> Publish All
        </DropdownToggle>
        <DropdownMenu>
-         <DropdownItem id="wd-publish-all">
+         {/* <DropdownItem id="wd-publish-all">
            <GreenCheckmark /> Publish All
-         </DropdownItem>
+         </DropdownItem> */}
          <DropdownItem id="wd-publish-all-modules-and-items">
            <GreenCheckmark /> Publish all modules and items
          </DropdownItem>
@@ -33,10 +33,10 @@ export default function ModulesControls() {
        </DropdownMenu>
      </Dropdown>
      {/* Implement the View Progress and Collapse All buttons with IDs wd-view-progress and wd-collapse-all */}
-   <Button variant="danger" size="lg" className="me-1 float-end" id="wd-view-progress">
+   <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-view-progress">
        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         View Progress
-     </Button><Button variant="danger" size="lg" className="me-1 float-end" id="wd-collapse-all">
+     </Button><Button variant="secondary" size="lg" className="me-1 float-end" id="wd-collapse-all">
        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
        Collapse All
      </Button>

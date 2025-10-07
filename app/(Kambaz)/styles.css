@@ -31,7 +31,12 @@ body * {
 }
 .list-group-item {
   --bs-list-group-border-color: gray;
+  
 }
 .wd-lesson {
   border-left: 3px solid green !important;
 }
+.wd-content-modules {
+  border-left: 3px solid green !important;
+}
+

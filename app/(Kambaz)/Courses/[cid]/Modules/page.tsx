@@ -27,21 +27,21 @@ export default function Modules() {
           <ListGroup className="wd-lessons rounded-0">
             <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title"> <BsGripVertical className="me-2 fs-3" />LEARNING OBJECTIVES <LessonControlButtons /></span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" />Introduction to the course <LessonControlButtons /></ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Learn what is Web Development</ListGroupItem>
               </ListGroup>
 
               <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title">READING</span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1">Full stack developer-chapter 1 : Introduction</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Full stack developer-chapter 2 : Creating User</ListGroupItem>
               </ListGroup>
 
               <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title">SLIDES</span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1">Introduction to web development</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Creating a HTTP server with node js</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Creating a React Application</ListGroupItem>
@@ -55,14 +55,14 @@ export default function Modules() {
           <ListGroup className="wd-lessons rounded-0">
             <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title">LEARNING OBJECTIVES</span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1">Learn how to create user interface with HTML</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Deploy the assignment to netlify</ListGroupItem>
               </ListGroup>
 
               <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title">SLIDES</span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1">Intro to HTML and DOM</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Formatting web content with heading</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Formatting content with lists and labels</ListGroupItem>
@@ -76,7 +76,7 @@ export default function Modules() {
           <ListGroup className="wd-lessons rounded-0">
             <ListGroupItem className="wd-lesson p-3 ps-1">
               <span className="wd-title">LEARNING OBJECTIVES</span> </ListGroupItem>
-              <ListGroup className="wd-content">
+              <ListGroup className="wd-content-modules">
                 <ListGroupItem className="wd-content-item p-3 ps-1">Adding styles</ListGroupItem>
                 <ListGroupItem className="wd-content-item p-3 ps-1">Learning flex, position and box structure.</ListGroupItem>
               </ListGroup>

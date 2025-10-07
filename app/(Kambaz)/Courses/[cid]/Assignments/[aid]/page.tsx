@@ -1,152 +1,185 @@
+import { Form, Row, FormLabel, FormControl, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Card, CardBody, CardTitle, FormCheck, Button } from "react-bootstrap";
+import PageContent from "../PageContent";
+import { MdDoNotDisturbAlt } from "react-icons/md";
+import GreenCheckmark from "../../Modules/GreenCheckmark";
 
 export default function AssignmentEditor() { 
   
   
   return (
     <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" /><br /><br />
-      <textarea id="wd-description" rows={10} cols={20} defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."}>
+
+      <Form>
+          <Row className="mb-1" >
+         <FormLabel column> Assignment Name </FormLabel>
+      </Row>
+      <Row className="mb-3"> 
+        <Col><FormControl type="text" defaultValue={"A1 - ENV + HTML"} /> </Col>
         
-      </textarea>
-      <br />
-      <table> 
-        <tbody>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-points">Points</label>
-          </td>
-          <td>
-            <input id="wd-points" defaultValue={100} />
-                     </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-group">Assignment Group</label>
-          </td>
-          <td>
-            <select id="wd-group" defaultValue={"ASSIGNMENTS"}>
-              <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-              <option value="GROUPS">GROUPS</option>
-              <option value="PROJECT">PROJECT</option>
+      </Row>
 
-            </select>
-            
-          </td>
-        </tr>
-      
-          <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-display-grade-as">Display Grade As</label>
-          </td>
-          <td>
-            <select id="wd-display-grade-as" defaultValue={"PERCENTAGE"}>
-              <option value="PERCENTAGE">PERCENTAGE </option>
-              <option value="GRADE">GRADE</option>
-              <option value="GPA">GPA</option>
+      <Row className="mb-3 ">
+        <Col>
+        <FormControl type="textarea" defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."} style={{ height: "250px" }}></FormControl>
+        </Col>
+      </Row>
 
-            </select>
-          </td>
-        </tr>
+      <Row className="mb-3">
+        <Col xxl={2}></Col>
+        <Col xxl={2} className="d-flex gap-5"> <FormLabel> Points</FormLabel></Col>
+       <Col xxl={8}><FormControl type="number" defaultValue={100} ></FormControl></Col>
 
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-submission-type">Submission Types</label>
-          </td>
-          <td>
-            <select id="wd-submission-type" defaultValue={"ONLINE"}>
-              <option value="ONLINE">ONLINE</option>
-              <option value="INPERSON">INPERSON</option>
-              <option value="CANVAS">CANVAS</option>
+      </Row>
 
-            </select>
-          </td>
-        </tr>
+      <Row className="mb-3">
+        <Col xxl={2}></Col>
+        <Col xxl={2} className="d-flex gap-5"> <FormLabel> Assignment Group</FormLabel></Col>
+        <Col xxl={8}>
+        <Dropdown className=" me-2">
+       <DropdownToggle variant="secondary" size="lg" id="wd-publish-all-btn">
+          Assignments
+       </DropdownToggle>
+       <DropdownMenu>
+         <DropdownItem >
+            Groups
+         </DropdownItem>
+         <DropdownItem >
+           Projects
+         </DropdownItem>
+         <DropdownItem >
+           Quizzes
+         </DropdownItem>
 
-        <tr>
-          <td align="right" valign="top"></td>
-          <td >
-            Online Entry Options <br />
-            
-            <input type="checkbox" name="online-entry" id="wd-text-entry"/>
-            <label htmlFor="wd-text-entry">Text Entry</label><br/>
+       </DropdownMenu>
+     </Dropdown>
 
-            <input type="checkbox" name="online-entry" id="wd-website-url"/>
-            <label htmlFor="wd-website-url">Website URL</label><br/>
+       </Col>
 
-            <input type="checkbox" name="online-entry" id="wd-media-recordings"/>
-            <label htmlFor="wd-media-recordings">Media Recording</label><br/>
+      </Row>
 
-            <input type="checkbox" name="online-entry" id="wd-student-annotation"/>
-            <label htmlFor="wd-student-annotation">Student Annotations</label><br/>
+      <Row className="mb-3">
+        <Col xxl={2}></Col>
+        <Col xxl={2} className="d-flex gap-5"> <FormLabel> Display Grade As</FormLabel></Col>
+        <Col xxl={8}>
+        <Dropdown className=" me-2">
+       <DropdownToggle variant="secondary" size="lg" id="wd-publish-all-btn">
+          Percentage
+       </DropdownToggle>
+       <DropdownMenu>
+         <DropdownItem >
+            Marks
+         </DropdownItem>
+         <DropdownItem >
+           Pointer
+         </DropdownItem>
+         <DropdownItem >
+           Average
+         </DropdownItem>
 
-            <input type="checkbox" name="online-entry" id="wd-file-upload"/>
-            <label htmlFor="wd-file-upload">File Uploads</label><br/>
-          </td>
-        </tr>
-        <tr><td><br /></td></tr>
-        <tr >
-           
-          <td align="right" valign="top"></td>
-          <td><label htmlFor="wd-assign-to">Assign Assign To</label></td>
-        </tr>
-        <tr>
-          <td align="right" valign="top"></td>
-          <td>
-            <select id="wd-assign-to" defaultValue={"EVERYONE"}>
-              <option value="EVERYONE">EVERYONE</option>
-              <option value="TA">TA</option>
-              <option value="FACULTY">FACULTY</option>
+       </DropdownMenu>
+     </Dropdown>
 
-            </select>
-            
-          </td>
-        </tr>
+       </Col>
 
-        <tr >
-          <td align="right" valign="top"></td>
-          <td><label htmlFor="wd-due-date">Due</label></td>
-        </tr>
-        <tr>
-          <td align="right" valign="top"></td>
-          <td><input type="date"
-              defaultValue="2024-05-13"
-              id="wd-due-date"/><br/></td>
-        </tr>
+      </Row>
 
-        <tr >
-          <td align="right" valign="top"></td>
-          <td><label htmlFor="wd-available-from">Available from</label></td>
-          <td><label htmlFor="wd-available-until">Until</label></td>
+      <Row className="mb-3" >
+        <Col xxl={2}></Col>
+        <Col xxl={2} className="d-flex gap-5"> <FormLabel> Submission Type</FormLabel></Col>
+        <Col xxl={8}>
+        <Card style={{ height: "18rem" }}>
+          <CardBody>
+        <Dropdown className=" me-3 mb-3 ">
+       <DropdownToggle variant="secondary" size="lg" id="wd-publish-all-btn">
+          Online
+       </DropdownToggle>
+       <DropdownMenu>
+         <DropdownItem >
+            Offline
+         </DropdownItem>
+         <DropdownItem >
+           GitHub
+         </DropdownItem>
+         
 
-        </tr>
-        <tr>
-          <td align="right" valign="top"></td>
-          <td><input type="date"
-              defaultValue="2024-05-06"
-              id="wd-available-from"/><br/></td>
-          <td><input type="date"
-              defaultValue="2024-05-20"
-              id="wd-available-until"/><br/></td>
-        </tr>
-       
-        {/* Complete on your own */}
-        <tr><td><hr /></td>
-        <td><hr /></td>
-        <td><hr /></td>
-        <td><hr /></td>
-        <td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr>
+       </DropdownMenu>
+     </Dropdown>
 
-        </tbody>
+     <CardTitle > Online Entry Options</CardTitle>
+     <FormCheck type="checkbox" label="Text Entry" name="formHorizontalRadios" defaultChecked />
+               <FormCheck type="checkbox" label="Website URL" name="formHorizontalRadios" />
+               <FormCheck type="checkbox" label="Media Recordings" name="formHorizontalRadios" />
+               <FormCheck type="checkbox" label="Student Annotation" name="formHorizontalRadios" />
+               <FormCheck type="checkbox" label="File Uploads" name="formHorizontalRadios" />
+
+
+     </CardBody>
+    </Card>
+       </Col>
+
+      </Row>
+
+      <Row className="mb-3" >
+        <Col xxl={2}></Col>
+        <Col xxl={2} className="d-flex gap-5"> <FormLabel> Assign</FormLabel></Col>
+        <Col xxl={8}>
+        <Card style={{ height: "18rem" }}>
+          <CardBody>
         
-        <tfoot>
-          <tr><td align="right" valign="top"></td> 
-          <td align="right" valign="top"></td>
-          <td><button>Cancel</button>
-          <button>Save</button></td>
-          
-          </tr>
-        </tfoot>
-      </table>
+
+     <CardTitle > Assign To</CardTitle>
+     <Dropdown className=" me-3 mb-3 ">
+       <DropdownToggle variant="secondary" size="lg" id="wd-publish-all-btn">
+          Everyone
+       </DropdownToggle>
+       <DropdownMenu>
+         <DropdownItem >
+            TA
+         </DropdownItem>
+         <DropdownItem >
+           Faculty
+         </DropdownItem>
+         
+
+       </DropdownMenu>
+     </Dropdown>
+
+     <CardTitle > Due</CardTitle>
+     <FormControl  className="mb-2" type="datetime-local" defaultValue={"2024-05-13T23:59"}></FormControl>
+
+    <Row >
+     <Col>
+     <CardTitle > Available From</CardTitle>
+     <FormControl type="datetime-local" defaultValue={"2024-05-10T23:59"}></FormControl>
+
+     </Col>
+     <Col>
+     <CardTitle > Available To</CardTitle>
+     <FormControl type="datetime-local" defaultValue={"2024-05-23T23:59"}></FormControl>
+
+     </Col>
+     </Row>
+
+
+     </CardBody>
+    </Card>
+       </Col>
+
+      </Row>
+                
+                <hr />
+                <Row>
+                  <Col xxl={9}></Col>
+                  <div className="text-nowrap float-end">
+                  <Button variant="secondary" size="lg" className="me-1 float-end"> Save
+                       </Button>
+                       <Button variant="danger" size="lg" className="me-1 float-end"> Cancel
+                       </Button>
+                       </div>
+                       </Row>
+                
+
+            </Form>
+
     </div>
 );}

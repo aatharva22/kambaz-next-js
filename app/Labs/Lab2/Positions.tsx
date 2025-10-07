@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 export default function Positions() {
     return(<div>
     <div id="wd-css-position-relative">

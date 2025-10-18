@@ -1,0 +1,23 @@
+export default function House() {
+
+    const house = {
+    bedrooms: 4,      bathrooms: 2.5,
+    squareFeet: 2000,
+    address: {
+      street: "Via Roma", city: "Roma", state: "RM", zip: "00100",  country: "Italy", },
+    owners: ["Alice", "Bob"],
+  };
+  return (
+    <div id="wd-house">
+      <h4>House</h4>
+      <h5>bedrooms</h5>      {house.bedrooms}
+      <h5>bathrooms</h5>     {house.bathrooms}
+      <h5>Data</h5>
+
+      {/* Here the arguments in stringify are(value :- value to stringify, replacer:- a function to represent or modify the object properties, before displaying, space :- space per indentation) */}
+      <pre>{JSON.stringify(house, null, 2)}</pre> 
+      <hr />
+    </div>
+)
+
+}

@@ -1,10 +1,14 @@
+"use client"
+import {usePathname} from "next/navigation"
 import Link from "next/link";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { FaBook, FaRegCircleUser } from "react-icons/fa6";
 import { RiLoginBoxFill } from "react-icons/ri";
 import { SlLogin } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
+import next from "next";
 export default function AccountNavigation() {
+  const pathname = usePathname()
  return (
    // <div id="wd-account-navigation">
    //  <ListGroup>
@@ -32,9 +36,10 @@ export default function AccountNavigation() {
    // </div>
 
    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      <Link href="Signin" id="wd-course-home-link" className="list-group-item active border-0">SignIn</Link>
-      <Link href="Signup"  id="wd-course-modules-link" className="list-group-item  text-danger border-0  " >SignUp
+      <Link href="Signin" id="wd-course-home-link" className = {` list-group-item border-0 ${pathname.endsWith("Signin") ? "active" : "text-danger "} ` } >SignIn</Link>
+
+      <Link href="Signup"  id="wd-course-modules-link" className={`list-group-item  ${pathname.endsWith("Signup") ? "active":"text-danger"} border-0`}  >SignUp
         </Link>
-      <Link href="Profile" id="wd-course-piazza-link" className="list-group-item text-danger border-0">Profile</Link>
+      <Link href="Profile" id="wd-course-piazza-link" className={`list-group-item  ${pathname.endsWith("Profile") ? "active":"text-danger"} border-0`}>Profile</Link>
       </div>
 );}

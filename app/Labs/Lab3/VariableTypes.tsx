@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 export default function VariableTypes() {
   const numberVariable = 123;
   const floatingPointNumber = 234.345;

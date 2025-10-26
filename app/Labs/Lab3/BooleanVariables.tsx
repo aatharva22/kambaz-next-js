@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 export default function BooleanVariables() {
     const numberVariable = 123 
     const floatingPointNumber:number = 234.345;

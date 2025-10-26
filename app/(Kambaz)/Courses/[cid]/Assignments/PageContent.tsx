@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge, Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "../Modules/LessonControlButtons";
@@ -5,8 +7,16 @@ import ModuleControlButtons from "../Modules/ModuleControlButtons";
 import { LuNotebookPen } from "react-icons/lu";
 import { IoEllipsisVertical } from "react-icons/io5";
 import TopBarControl from "./TopBarControl";
+import * as db from "../../../Database"
+import { useParams } from "next/navigation";
+
+
+
+let i = 1
 
 export default function PageContent() {
+    const assig = db.assignments
+    const {cid, aid} = useParams()
     return(
         <div>
             <ListGroup className="rounded-0" id="wd-modules">
@@ -26,7 +36,27 @@ export default function PageContent() {
 
           <ListGroup className="wd-lessons rounded-0">
 
-            <ListGroupItem action href="/Courses/1234/Assignments/A1 - ENV + HTML" className="wd-lesson p-3 ps-1">
+            {assig.filter((assig) => assig.course === cid).map((assig) => <ListGroupItem action key={i++} href={`/Courses/${cid}/Assignments/${assig._id}`} className="wd-lesson p-3 ps-1">
+            <Row>
+                <Col xxl={1} className="d-flex">
+                <BsGripVertical className="me-2 fs-3 " />
+                <LuNotebookPen className="me-2 fs-3"/>
+                </Col>
+                <Col xxl={8}>
+                <span className="wd-title"> {assig.title}
+                <br />Multiple modules | Not available until May 6 at 12am| <br />
+                Due May 13 at 11:59pm| 100 pts </span> 
+                </Col>
+                <Col>
+                <LessonControlButtons />
+                </Col>
+           
+          </Row>
+          </ListGroupItem>
+
+            ) }
+
+            {/* <ListGroupItem action href="/Courses/1234/Assignments/A1 - ENV + HTML" className="wd-lesson p-3 ps-1">
             <Row>
                 <Col xxl={1} className="d-flex">
                 <BsGripVertical className="me-2 fs-3 " />
@@ -114,7 +144,7 @@ export default function PageContent() {
                 </Col>
            
           </Row>
-          </ListGroupItem>
+          </ListGroupItem> */}
           
         
             

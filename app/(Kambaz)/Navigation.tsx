@@ -5,11 +5,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
-import { FaBook } from "react-icons/fa6";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { FaCalendarAlt } from "react-icons/fa";
-import { CiMail } from "react-icons/ci";
-import { IoIosSettings } from "react-icons/io";
 export default function KambazNavigation() {
   let i = 1
   const pathname = usePathname()

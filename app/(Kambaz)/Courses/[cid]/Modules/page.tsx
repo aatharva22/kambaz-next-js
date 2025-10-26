@@ -1,11 +1,29 @@
+"use client"
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 
+import * as db from "../../../Database"
+import { useParams } from "next/navigation";
 
 export default function Modules() {
+  const {cid} = useParams()
+  const modules = db.modules
+
+  // type Module = {"_id": string,
+  //   "name": string,
+  //   "description": string,
+  //   "course": string,
+  // "lessons":[{
+  //       "_id": string,
+  //       "name": string,
+  //       "description": string,
+  //       "module": string
+  //     }]}
+  
+
   return (
     <div>
       {/* Implement Collapse All button, View Progress button, etc. */}
@@ -19,6 +37,33 @@ export default function Modules() {
             </select>
       <button>+Module</button> */}
       <ModulesControls /><br /><br /><br /><br />
+      <ListGroup className="rounded-0" id="wd-modules">
+      {modules.filter((module)=> module.course === cid).map((module) => 
+        <ListGroupItem  key={module._id} className="wd-module p-0 mb-5 fs-5 border-gray">
+            <div className="wd-title p-3 ps-2 bg-secondary">
+              <BsGripVertical className="me-2 fs-3" /> {module.name} <ModuleControlButtons /> </div>
+              {module.lessons && (<ListGroup className="wd-lessons rounded-0">
+
+                {module.lessons.map((lesson) => <ListGroupItem key={lesson._id} className="wd-lesson p-3 ps-1">
+              <span className="wd-title"> <BsGripVertical className="me-2 fs-3" />{lesson.name} <LessonControlButtons /></span> 
+              <ListGroup className="wd-content-modules">
+                <ListGroupItem className="wd-content-item p-3 ps-1">{lesson.description}</ListGroupItem>
+                
+              </ListGroup>
+              </ListGroupItem>
+              
+            
+            )}
+
+
+              </ListGroup>)}
+        </ListGroupItem>
+        
+
+      ) }
+       
+      </ListGroup>
+
 
       <ListGroup className="rounded-0" id="wd-modules">
         <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
@@ -102,5 +147,7 @@ export default function Modules() {
 
 
       </ListGroup>
+
+
     </div>
 );}

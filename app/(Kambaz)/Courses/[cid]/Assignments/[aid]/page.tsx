@@ -1,10 +1,17 @@
+"use client"
 import { Form, Row, FormLabel, FormControl, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Card, CardBody, CardTitle, FormCheck, Button } from "react-bootstrap";
 import PageContent from "../PageContent";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import GreenCheckmark from "../../Modules/GreenCheckmark";
+import { useParams } from "next/navigation";
+import * as db from "../../../../Database"
+import Link from "next/link";
+
 
 export default function AssignmentEditor() { 
   
+  const {aid, cid} = useParams()
+  const assignments = db.assignments
   
   return (
     <div id="wd-assignments-editor">
@@ -14,7 +21,9 @@ export default function AssignmentEditor() {
          <FormLabel column> Assignment Name </FormLabel>
       </Row>
       <Row className="mb-3"> 
-        <Col><FormControl type="text" defaultValue={"A1 - ENV + HTML"} /> </Col>
+        <Col><FormControl type="text" defaultValue={assignments.find((assign) => aid === assign._id)?.title} /> 
+  
+           </Col>
         
       </Row>
 
@@ -171,10 +180,11 @@ export default function AssignmentEditor() {
                 <Row>
                   <Col xxl={9}></Col>
                   <div className="text-nowrap float-end">
+                    <Link href={`/Courses/${cid}/Assignments`}>
                   <Button variant="secondary" size="lg" className="me-1 float-end"> Save
-                       </Button>
-                       <Button variant="danger" size="lg" className="me-1 float-end"> Cancel
-                       </Button>
+                       </Button></Link>
+                       <Link href={`/Courses/${cid}/Assignments`}><Button variant="danger" size="lg" className="me-1 float-end"> Cancel
+                       </Button></Link>
                        </div>
                        </Row>
                 

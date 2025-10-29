@@ -125,4 +125,75 @@
     "lastActivity": "1852-11-27",
     "totalActivity": "21:32:43"
   }
+  ,
+   {
+    "_id": "1234",
+    "username": "ada",
+    "password": "123",
+    "firstName": "Atharva",
+    "lastName": "Sonawane",
+    "email": "ada@lovelace.com",
+    "dob": "1815-12-15",
+    "role": "ADMIN",
+    "loginId": "002143650S",
+    "section": "S290",
+    "lastActivity": "1852-11-27",
+    "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "2345",
+    "username": "ada",
+    "password": "123",
+    "firstName": "Rah",
+    "lastName": "Twn",
+    "email": "ada@lovelace.com",
+    "dob": "1815-12-15",
+    "role": "ADMIN",
+    "loginId": "002143650S",
+    "section": "S104",
+    "lastActivity": "1852-11-27",
+    "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "3456",
+    "username": "ada",
+    "password": "123",
+    "firstName": "Atha",
+    "lastName": "Shane",
+    "email": "ada@lovelace.com",
+    "dob": "1815-12-15",
+    "role": "ADMIN",
+    "loginId": "002143650S",
+    "section": "S103",
+    "lastActivity": "1852-11-27",
+    "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "4567",
+    "username": "ada",
+    "password": "123",
+    "firstName": "Rten",
+    "lastName": "Sone",
+    "email": "ada@lovelace.com",
+    "dob": "1815-12-15",
+    "role": "ADMIN",
+    "loginId": "002143650S",
+    "section": "S101",
+    "lastActivity": "1852-11-27",
+    "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "6789",
+    "username": "ada",
+    "password": "123",
+    "firstName": "Mary",
+    "lastName": "Ten",
+    "email": "ada@lovelace.com",
+    "dob": "1815-12-15",
+    "role": "ADMIN",
+    "loginId": "002143650S",
+    "section": "S101",
+    "lastActivity": "1852-11-27",
+    "totalActivity": "21:32:43"
+  }
 ]

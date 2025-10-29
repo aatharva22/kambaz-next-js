@@ -11,7 +11,7 @@ export default function Dashboard() {
       <div id="wd-dashboard-courses">
         
           <Row xs={1} md={5} className="g-4">
-          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          {/* <Col className="wd-dashboard-course " style={{ width: "300px" }}>
           <Card>
           <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
             <CardImg variant="top" src="/images/reactjs.jpg" width="100%" height={160} alt="React" />
@@ -24,7 +24,7 @@ export default function Dashboard() {
             </CardBody>
           </Link>
           </Card>
-        </Col>
+        </Col> */}
 
         
           {courses.map((course) => (
@@ -32,7 +32,7 @@ export default function Dashboard() {
               <Card>
                 <Link href={`/Courses/${course._id}/Home`}
                       className="wd-dashboard-course-link text-decoration-none text-dark" >
-                  <CardImg src="/images/reactjs.jpg" variant="top" width="100%" height={160} />
+                  <CardImg src={course.src} variant="top" width="100%" height={160} />
                   <CardBody className="card-body">
                     <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
                       {course.name} </CardTitle>
@@ -51,7 +51,7 @@ export default function Dashboard() {
     
         
           
-          <Col className="wd-dashboard-course " style={{ width: "300px" }}>
+          {/* <Col className="wd-dashboard-course " style={{ width: "300px" }}>
           <Card>
           <Link href="/Courses/2345" className="wd-dashboard-course-link text-decoration-none text-dark">
             <CardImg variant="top" src="/images/javascript.jpg" width="100%" height={160} alt="JavaScript" />
@@ -140,7 +140,7 @@ export default function Dashboard() {
             </CardBody>
           </Link>
           </Card>
-        </Col> 
+        </Col>  */}
       </Row>
 
       

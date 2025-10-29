@@ -44,8 +44,8 @@ export default function PageContent() {
                 </Col>
                 <Col xxl={8}>
                 <span className="wd-title"> {assig.title}
-                <br />Multiple modules | Not available until May 6 at 12am| <br />
-                Due May 13 at 11:59pm| 100 pts </span> 
+                <br />Multiple modules | Not available until {assig.until}|<br />
+                Due May {assig.due} | 100 pts </span> 
                 </Col>
                 <Col>
                 <LessonControlButtons />

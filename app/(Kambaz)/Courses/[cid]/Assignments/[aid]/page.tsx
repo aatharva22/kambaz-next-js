@@ -12,6 +12,10 @@ export default function AssignmentEditor() {
   
   const {aid, cid} = useParams()
   const assignments = db.assignments
+
+  console.log(assignments.find((assig) => (assig._id === aid))?.due)
+
+  
   
   return (
     <div id="wd-assignments-editor">
@@ -21,7 +25,9 @@ export default function AssignmentEditor() {
          <FormLabel column> Assignment Name </FormLabel>
       </Row>
       <Row className="mb-3"> 
-        <Col><FormControl type="text" defaultValue={assignments.find((assign) => aid === assign._id)?.title} /> 
+        <Col><FormControl type="text" defaultValue={assignments.find((assign) => aid === assign._id)?.title}
+         /> 
+         
   
            </Col>
         
@@ -154,17 +160,17 @@ export default function AssignmentEditor() {
      </Dropdown>
 
      <CardTitle > Due</CardTitle>
-     <FormControl  className="mb-2 font-black" type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.until}></FormControl>
+     <FormControl  className="mb-2 font-black" type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}></FormControl>
 
     <Row >
      <Col>
      <CardTitle > Available From</CardTitle>
-     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.due}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.duedt}></FormControl>
 
      </Col>
      <Col>
      <CardTitle > Available To</CardTitle>
-     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.until}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.duedt}></FormControl>
 
      </Col>
      </Row>

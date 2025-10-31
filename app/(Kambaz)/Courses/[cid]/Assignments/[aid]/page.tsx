@@ -154,17 +154,17 @@ export default function AssignmentEditor() {
      </Dropdown>
 
      <CardTitle > Due</CardTitle>
-     <FormControl  className="mb-2" type="datetime-local" defaultValue={"2024-05-13T23:59"}></FormControl>
+     <FormControl  className="mb-2 font-black" type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.until}></FormControl>
 
     <Row >
      <Col>
      <CardTitle > Available From</CardTitle>
-     <FormControl type="datetime-local" defaultValue={"2024-05-10T23:59"}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.due}></FormControl>
 
      </Col>
      <Col>
      <CardTitle > Available To</CardTitle>
-     <FormControl type="datetime-local" defaultValue={"2024-05-23T23:59"}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.until}></FormControl>
 
      </Col>
      </Row>

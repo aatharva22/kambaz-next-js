@@ -165,7 +165,7 @@ export default function AssignmentEditor() {
     <Row >
      <Col>
      <CardTitle > Available From</CardTitle>
-     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.duedt}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}></FormControl>
 
      </Col>
      <Col>

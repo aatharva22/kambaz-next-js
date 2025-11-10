@@ -1,23 +1,25 @@
-import Link from "next/link";
-import { Nav, NavItem, NavLink } from "react-bootstrap";
-export default function Labs () {
+"use client"
+import BooleanStateVariables from "./BooleanStateVariables";
+import ClickEvent from "./ClickEvent";
+import Counter from "./Counter";
+import EventObject from "./EventObject";
+import PassingDataOnEvent from "./PassingDataOnEvent";
+import PassingFunctions from "./PassingFunctions";
+import StringStateVariables from "./StringStateVariables";
+
+function sayHello() {
+    alert("Say Hello!")
+}
+export default function Lab4() {
     return(
-        <div >
-           <Nav variant="pills">
-                <NavItem className="d-flex flex-row gap-3 justify-content-center" >
-                    <NavLink href="\Labs" as={Link} >
-                        Home
-                    </NavLink>
-                    <NavLink href="\Labs" as={Link} >
-                        About Us
-                    </NavLink><NavLink href="\Labs" as={Link} >
-                        Contact Us
-                    </NavLink><NavLink href="\Labs" as={Link} >
-                        FAQs
-                    </NavLink>
-                </NavItem>
-           </Nav>
-           <br /><hr />
+        <div>
+            <ClickEvent/>
+            <PassingDataOnEvent/>
+            <PassingFunctions TheFunction={sayHello}/> 
+            <EventObject/>
+            <Counter/>
+            <BooleanStateVariables/>
+            <StringStateVariables/>
         </div>
     )
 }

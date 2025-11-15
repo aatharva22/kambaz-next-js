@@ -1,22 +1,27 @@
-
+"use client"
 import { ReactNode } from "react";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify } from "react-icons/fa";
 import Breadcrumb from "./breadcrumb";
-import * as db from "../../Database"
+import { RootState } from "./../../store";
+import { useSelector } from "react-redux";
+import { useParams } from "next/navigation";
 
 
-export default async function CoursesLayout(
-  { children, params }: Readonly<{ children: ReactNode; params: Promise<{ cid: string }> }>) {
- const {cid} = await params; 
- const courses = db.courses
+export default function CoursesLayout(
+  { children}: { children: ReactNode }) {
  
- const course = courses.find((course) => (course?._id === cid))
+ const {cid} = useParams()
+ //const courses = db.courses
+ const {courses} = useSelector((state:RootState) => state.coursesReducer)
+
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ const course = courses.find((course:any) => (course?._id === cid))
  return (
    <div id="wd-courses">
      <h2 className="text-danger">
       <FaAlignJustify className="me-4 fs-4 mb-1" />
-     
+      {/* {course?.name} */}
      <Breadcrumb course={course} /> 
       </h2> <hr />
      

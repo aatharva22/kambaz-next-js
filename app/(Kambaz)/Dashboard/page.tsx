@@ -6,11 +6,15 @@ import Link from "next/link";
 import * as db from "../Database";
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Col, FormControl, Row } from "react-bootstrap";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { redirect } from "next/navigation";
 export default function Dashboard() {
   const dispatch = useDispatch()
   const {courses} = useSelector((state:RootState) => state.coursesReducer)
   const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+  if (!currentUser ) {
+    redirect('/Account/Signin')
+  }
+  
   const { enrollments } = db;
   //const [courses, setCourses] = useState(db.courses)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,8 +59,9 @@ export default function Dashboard() {
           </Card>
         </Col> */}
 
-        
-          {courses.filter((course) =>
+
+          { 
+          courses.filter((course) =>
       enrollments.some(
         (enrollment) =>
           enrollment.user === currentUser._id &&

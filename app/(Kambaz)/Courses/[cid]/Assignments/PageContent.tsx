@@ -8,15 +8,20 @@ import { LuNotebookPen } from "react-icons/lu";
 import { IoEllipsisVertical } from "react-icons/io5";
 import TopBarControl from "./TopBarControl";
 import * as db from "../../../Database"
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
+import { FaPencilAlt } from "react-icons/fa";
+import { RootState } from "../../../store";
+import { useSelector } from "react-redux";
 
 
 
 let i = 1
 
 export default function PageContent() {
-    const assig = db.assignments
+    const {currentUser} = useSelector((state:RootState) => state.accountReducer) 
+    const {assignments} = useSelector((state:RootState) => state.assignmentsReducer)
     const {cid, aid} = useParams()
+    if (!currentUser) return redirect("/Account/Signin")
     return(
         <div>
             <ListGroup className="rounded-0" id="wd-modules">
@@ -36,11 +41,19 @@ export default function PageContent() {
 
           <ListGroup className="wd-lessons rounded-0">
 
-            {assig.filter((assig) => assig.course === cid).map((assig) => <ListGroupItem action key={i++} href={`/Courses/${cid}/Assignments/${assig._id}`} className="wd-lesson p-3 ps-1">
+            {assignments.filter((assig) => assig.course === cid).map((assig) => <ListGroupItem action key={i++}  className="wd-lesson p-3 ps-1">
             <Row>
                 <Col xxl={1} className="d-flex">
                 <BsGripVertical className="me-2 fs-3 " />
+                {/* Pencil Icon Only visible to faculty, which is used to edit */}
                 <LuNotebookPen className="me-2 fs-3"/>
+                 { currentUser.role === "FACULTY" && <FaPencilAlt className="me-2 fs-3" onClick={
+                  () => {
+                    if(currentUser?.role === "FACULTY") {
+                        redirect(`/Courses/${cid}/Assignments/${assig._id}`)
+                    }
+                  }
+                 } />}
                 </Col>
                 <Col xxl={8}>
                 <span className="wd-title"> {assig.title}

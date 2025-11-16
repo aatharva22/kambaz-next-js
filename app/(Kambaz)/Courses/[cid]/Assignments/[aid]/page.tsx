@@ -3,12 +3,29 @@ import { Form, Row, FormLabel, FormControl, Col, Dropdown, DropdownItem, Dropdow
 import { useParams } from "next/navigation";
 import * as db from "../../../../Database"
 import Link from "next/link";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addAssignment } from "../reducer";
+import { useRouter } from "next/navigation";
 
 
 export default function AssignmentEditor() { 
   
   const {aid, cid} = useParams()
+  const router = useRouter()
   const assignments = db.assignments
+  const [assignment, setAssignment] = useState({
+    "_id": `${aid}`,
+    "title": "",
+    "course": `${cid}`,
+    "until": "",
+    "due": "",
+    "untildt": "",
+    "duedt": "",
+    "points": 100,
+    description: ""
+  })
+  const dispatch = useDispatch()
 
   console.log(assignments.find((assig) => (assig._id === aid))?.due)
 
@@ -23,6 +40,7 @@ export default function AssignmentEditor() {
       </Row>
       <Row className="mb-3"> 
         <Col><FormControl type="text" defaultValue={assignments.find((assign) => aid === assign._id)?.title}
+        onChange={(e) => setAssignment({...assignment, title:e.target.value})}
          /> 
          
   
@@ -32,14 +50,18 @@ export default function AssignmentEditor() {
 
       <Row className="mb-3 ">
         <Col>
-        <FormControl type="textarea" defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."} style={{ height: "250px" }}></FormControl>
+        <FormControl type="textarea" defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."} style={{ height: "250px" }}
+        onChange={(e) => setAssignment({...assignment, description :e.target.value})}
+        ></FormControl>
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col xxl={2}></Col>
         <Col xxl={2} className="d-flex gap-5"> <FormLabel> Points</FormLabel></Col>
-       <Col xxl={8}><FormControl type="number" defaultValue={100} ></FormControl></Col>
+       <Col xxl={8}><FormControl type="number" defaultValue={100} 
+       onChange={(e) => setAssignment({...assignment, points:Number(e.target.value)})}
+       ></FormControl></Col>
 
       </Row>
 
@@ -157,17 +179,23 @@ export default function AssignmentEditor() {
      </Dropdown>
 
      <CardTitle > Due</CardTitle>
-     <FormControl  className="mb-2 font-black" type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}></FormControl>
+     <FormControl  className="mb-2 font-black" type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}>
+  
+     </FormControl>
 
     <Row >
      <Col>
      <CardTitle > Available From</CardTitle>
-     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.untildt}
+      onChange={(e) => setAssignment({...assignment, untildt:e.target.value})}
+      ></FormControl>
 
      </Col>
      <Col>
      <CardTitle > Available To</CardTitle>
-     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.duedt}></FormControl>
+     <FormControl type="datetime-local" defaultValue={assignments.find((assign) => aid === assign._id)?.duedt}
+      onChange={(e) => setAssignment({...assignment, duedt:e.target.value})}
+      ></FormControl>
 
      </Col>
      </Row>
@@ -183,11 +211,31 @@ export default function AssignmentEditor() {
                 <Row>
                   <Col xxl={9}></Col>
                   <div className="text-nowrap float-end">
-                    <Link href={`/Courses/${cid}/Assignments`}>
-                  <Button variant="secondary" size="lg" className="me-1 float-end"> Save
-                       </Button></Link>
-                       <Link href={`/Courses/${cid}/Assignments`}><Button variant="danger" size="lg" className="me-1 float-end"> Cancel
-                       </Button></Link>
+                    
+                  <Button variant="secondary" size="lg" className="me-1 float-end"
+                  onClick={() => { dispatch(addAssignment(assignment))
+                                  router.push(`/Courses/${cid}/Assignments`)      
+                  }}
+                  > Save
+                       </Button>
+
+                       <Button variant="danger" size="lg" className="me-1 float-end"
+                       onClick={()=> {
+                        setAssignment({
+                           "_id": `${aid}`,
+                           "title": "",
+                           "course": `${cid}`,
+                           "until": "",
+                           "due": "",
+                           "untildt": "",
+                           "duedt": "",
+                           "points": 100,
+                           description: ""
+                         })
+                         router.push(`/Courses/${cid}/Assignments`) 
+
+                       }}> Cancel
+                       </Button>
                        </div>
                        </Row>
                 

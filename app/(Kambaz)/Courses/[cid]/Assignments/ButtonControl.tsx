@@ -1,8 +1,15 @@
+"use client"
 import { Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
+import { redirect, useParams } from "next/navigation";
+
+import { useRouter } from "next/navigation";
+
 
 export default function ButtonControl() {
+  const {cid} = useParams()
+  const router = useRouter()
     return(
         <div className="text-nowrap" >
              <Row className = "mb-3">
@@ -26,8 +33,11 @@ export default function ButtonControl() {
        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
        Group
      </Button>
-     <Button variant="danger" size="lg" className="me-1 " id="wd-add-module-btn">
-       <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+     <Button variant="danger" size="lg" className="me-1 " id="wd-add-module-btn"  onClick={
+        () => router.push(`/Courses/${cid}/Assignments/10`)
+       }>
+       <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} 
+       />
        Assignments
      </Button>
         </Col>

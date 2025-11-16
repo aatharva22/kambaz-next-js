@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewCourse, deleteCourse, updateCourse} from "../Courses/reducer";
 import { RootState } from "../store";
 import Link from "next/link";
-
+import * as db from "../Database";
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Col, FormControl, Row } from "react-bootstrap";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 export default function Dashboard() {
   const dispatch = useDispatch()
   const {courses} = useSelector((state:RootState) => state.coursesReducer)
+  const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+  const { enrollments } = db;
   //const [courses, setCourses] = useState(db.courses)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [course , setCourse] = useState<any> ( {
@@ -54,7 +56,13 @@ export default function Dashboard() {
         </Col> */}
 
         
-          {courses.map((course) => (
+          {courses.filter((course) =>
+      enrollments.some(
+        (enrollment) =>
+          enrollment.user === currentUser._id &&
+          enrollment.course === course._id
+         ))
+        .map((course) => (
             <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
               <Card>
                 <Link href={`/Courses/${course._id}/Home`}

@@ -8,7 +8,8 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.",
+    "editing": false
   },
   {
     "_id": "A102",
@@ -19,7 +20,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A103",
@@ -30,7 +31,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A201",
@@ -41,7 +42,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A202",
@@ -52,7 +53,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A203",
@@ -63,7 +64,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A301",
@@ -74,7 +75,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A302",
@@ -85,7 +86,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A303",
@@ -96,7 +97,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A401",
@@ -107,7 +108,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A402",
@@ -118,7 +119,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A403",
@@ -129,7 +130,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A501",
@@ -140,7 +141,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A502",
@@ -151,7 +152,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A503",
@@ -162,7 +163,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A901",
@@ -173,7 +174,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A902",
@@ -184,7 +185,7 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A903",
@@ -195,7 +196,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A601",
@@ -206,7 +207,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A602",
@@ -217,7 +218,8 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.",
+    "editing": false
   },
   {
     "_id": "A603",
@@ -228,7 +230,8 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.",
+    "editing": false
   },
   {
     "_id": "A701",
@@ -239,7 +242,7 @@
     "untildt": "2025-05-06T00:00",
     "duedt": "2025-05-13T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.","editing": false
   },
   {
     "_id": "A702",
@@ -250,7 +253,8 @@
     "untildt": "2025-05-14T00:00",
     "duedt": "2025-05-21T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.",
+    "editing": false
   },
   {
     "_id": "A703",
@@ -261,6 +265,7 @@
     "untildt": "2025-05-22T00:00",
     "duedt": "2025-05-29T23:59",
     "points": 100,
-    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential."
+    "description": "The assignment is available online. Submit a link to the landing page of every submission is essential.",
+    "editing": false
   }
 ]

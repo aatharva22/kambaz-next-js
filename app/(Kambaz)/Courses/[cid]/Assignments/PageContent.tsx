@@ -1,29 +1,84 @@
 "use client"
 
-import { Badge, Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Badge, Col, ListGroup, ListGroupItem, Row, Modal, Button } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "../Modules/LessonControlButtons";
-import ModuleControlButtons from "../Modules/ModuleControlButtons";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 import { LuNotebookPen } from "react-icons/lu";
-import { IoEllipsisVertical } from "react-icons/io5";
+
 import TopBarControl from "./TopBarControl";
-import * as db from "../../../Database"
+
 import { redirect, useParams } from "next/navigation";
 import { FaPencilAlt } from "react-icons/fa";
 import { RootState } from "../../../store";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAssignment, editAssignment } from "./reducer";
+import { useState } from "react";
 
 
 
 let i = 1
 
 export default function PageContent() {
+  const [show,setShow] = useState(false)
+  const [assigId, setAssigId] = useState("");
+  function formatDueDate(dt: string) {
+  const date = new Date(dt);
+  
+
+  const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
+
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+
+  let hours = date.getHours();
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+
+  const ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12 || 12; // Convert to 12-hour format
+
+  return `${month} ${day} at ${hours}:${minutes}${ampm}`;
+}
+
+
     const {currentUser} = useSelector((state:RootState) => state.accountReducer) 
     const {assignments} = useSelector((state:RootState) => state.assignmentsReducer)
+    
     const {cid, aid} = useParams()
+
+    const dispatch = useDispatch()
     if (!currentUser) return redirect("/Account/Signin")
+      
     return(
         <div>
+          <Modal show={show} onHide={() => setShow(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          This assignment will be deleted!
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => { setShow(false)
+           setAssigId("0")
+          }
+          }>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => {
+            dispatch(deleteAssignment(assigId))
+            setShow(false)}}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      
             <ListGroup className="rounded-0" id="wd-modules">
         <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
           <div className="wd-title p-3 ps-2 bg-secondary">
@@ -50,6 +105,7 @@ export default function PageContent() {
                  { currentUser.role === "FACULTY" && <FaPencilAlt className="me-2 fs-3" onClick={
                   () => {
                     if(currentUser?.role === "FACULTY") {
+                        dispatch(editAssignment(assig))
                         redirect(`/Courses/${cid}/Assignments/${assig._id}`)
                     }
                   }
@@ -57,10 +113,19 @@ export default function PageContent() {
                 </Col>
                 <Col xxl={8}>
                 <span className="wd-title"> {assig.title}
-                <br />Multiple modules | Not available until {assig.until}|<br />
-                Due May {assig.due} | 100 pts </span> 
+                <br />Multiple modules | Not available until {formatDueDate(assig.untildt)}|<br />
+                Due May {formatDueDate(assig.duedt)} | 100 pts </span> 
                 </Col>
                 <Col>
+                { (currentUser?.role === "FACULTY") && (<FaRegTrashAlt className="me-2 fs-3" 
+                // onClick={ () => dispatch(deleteAssignment(assig._id))}
+                onClick={() => {
+                  setAssigId(assig._id)
+                  setShow(true)
+                
+                }
+                }
+                />) }
                 <LessonControlButtons />
                 </Col>
            

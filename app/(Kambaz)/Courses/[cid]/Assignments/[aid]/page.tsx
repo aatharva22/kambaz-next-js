@@ -4,26 +4,28 @@ import { useParams } from "next/navigation";
 import * as db from "../../../../Database"
 import Link from "next/link";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addAssignment } from "../reducer";
+import { useDispatch, useSelector } from "react-redux";
+import { addAssignment, updateAssignment } from "../reducer";
 import { useRouter } from "next/navigation";
+import { RootState } from "@/app/(Kambaz)/store";
 
 
 export default function AssignmentEditor() { 
   
   const {aid, cid} = useParams()
   const router = useRouter()
-  const assignments = db.assignments
+  const  { assignments } = useSelector((state:RootState) => state.assignmentsReducer )
   const [assignment, setAssignment] = useState({
     "_id": `${aid}`,
-    "title": "",
+    "title": assignments.find((a) => aid === a._id)?.title,
     "course": `${cid}`,
-    "until": "",
-    "due": "",
-    "untildt": "",
-    "duedt": "",
+    "until": assignments.find((a) => aid === a._id)?.until,
+    "due": assignments.find((a) => aid === a._id)?.due,
+    "untildt": assignments.find((a) => aid === a._id)?.untildt,
+    "duedt": assignments.find((a) => aid === a._id)?.duedt,
     "points": 100,
-    description: ""
+    description: assignments.find((a) => aid === a._id)?.description,
+    editing : false
   })
   const dispatch = useDispatch()
 
@@ -50,7 +52,7 @@ export default function AssignmentEditor() {
 
       <Row className="mb-3 ">
         <Col>
-        <FormControl type="textarea" defaultValue={"The assignment is available online Submit a link to the landing page of every sumbisson is essential."} style={{ height: "250px" }}
+        <FormControl type="textarea" defaultValue={assignments.find((assign) => aid === assign._id)?.description} style={{ height: "250px" }}
         onChange={(e) => setAssignment({...assignment, description :e.target.value})}
         ></FormControl>
         </Col>
@@ -59,7 +61,7 @@ export default function AssignmentEditor() {
       <Row className="mb-3">
         <Col xxl={2}></Col>
         <Col xxl={2} className="d-flex gap-5"> <FormLabel> Points</FormLabel></Col>
-       <Col xxl={8}><FormControl type="number" defaultValue={100} 
+       <Col xxl={8}><FormControl type="number" defaultValue={assignments.find((assign) => aid === assign._id)?.points} 
        onChange={(e) => setAssignment({...assignment, points:Number(e.target.value)})}
        ></FormControl></Col>
 
@@ -213,14 +215,39 @@ export default function AssignmentEditor() {
                   <div className="text-nowrap float-end">
                     
                   <Button variant="secondary" size="lg" className="me-1 float-end"
-                  onClick={() => { dispatch(addAssignment(assignment))
-                                  router.push(`/Courses/${cid}/Assignments`)      
+                  onClick={ () => {if(assignments.find((assign) => (
+                    assign._id === aid
+                  ))?.editing) {
+                    
+                    { dispatch(updateAssignment(assignment))
+                      router.push(`/Courses/${cid}/Assignments`) 
+                       
+                      setAssignment({
+                           "_id": `${aid}`,
+                           "title": "",
+                           "course": `${cid}`,
+                           "until": "",
+                           "due": "",
+                           "untildt": "",
+                           "duedt": "",
+                           "points": 100,
+                           description: "",
+                           editing : false,
+                         })
+                         
+
                   }}
-                  > Save
+                  else{
+                    { dispatch(addAssignment(assignment))
+                                  router.push(`/Courses/${cid}/Assignments`)
+                  }
+                }
+              } }> Save
                        </Button>
 
                        <Button variant="danger" size="lg" className="me-1 float-end"
                        onClick={()=> {
+                        router.push(`/Courses/${cid}/Assignments`)
                         setAssignment({
                            "_id": `${aid}`,
                            "title": "",
@@ -230,9 +257,10 @@ export default function AssignmentEditor() {
                            "untildt": "",
                            "duedt": "",
                            "points": 100,
-                           description: ""
+                           description: "",
+                           editing : false
                          })
-                         router.push(`/Courses/${cid}/Assignments`) 
+                          
 
                        }}> Cancel
                        </Button>

@@ -1,7 +1,7 @@
 import AddRedux from "./AddRedux";
 import CounterRedux from "./CounterRedux";
 import HelloRedux from "./HelloRedux";
-import TodoList from "./Todos/TodoList";
+import TodoList from "../../Lab4/ReduxExamples/Todos/TodoList";
 
 
 export default function ReduxExamples() {

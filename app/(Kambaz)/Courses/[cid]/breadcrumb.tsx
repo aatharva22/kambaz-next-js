@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
-export default function Breadcrumb({ course }: { course: { name: string } | undefined; }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Breadcrumb({ course }: { course: { name: any } | undefined; }) {
  const pathname = usePathname();
  return (
    <span>

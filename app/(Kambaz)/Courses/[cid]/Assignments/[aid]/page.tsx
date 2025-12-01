@@ -1,13 +1,12 @@
 "use client"
 import { Form, Row, FormLabel, FormControl, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Card, CardBody, CardTitle, FormCheck, Button } from "react-bootstrap";
 import { useParams } from "next/navigation";
-import * as db from "../../../../Database"
-import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAssignment, updateAssignment } from "../reducer";
+import { addAssignment, setAssignments, updateAssignment } from "../reducer";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/app/(Kambaz)/store";
+import * as client from "../client";
 
 
 export default function AssignmentEditor() { 
@@ -30,6 +29,20 @@ export default function AssignmentEditor() {
   const dispatch = useDispatch()
 
   console.log(assignments.find((assig) => (assig._id === aid))?.due)
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSaveEdit = async (assignment:any) => {
+    await client.updateAssignment(assignment);
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSaveCreate = async (assignment: any) => {
+  const newAssignment = await client.createAssignmentForCourse(
+    cid as string,
+    assignment
+  );
+  return newAssignment;
+};
+
 
   
   
@@ -215,34 +228,29 @@ export default function AssignmentEditor() {
                   <div className="text-nowrap float-end">
                     
                   <Button variant="secondary" size="lg" className="me-1 float-end"
-                  onClick={ () => {if(assignments.find((assign) => (
-                    assign._id === aid
-                  ))?.editing) {
-                    
-                    { dispatch(updateAssignment(assignment))
-                      router.push(`/Courses/${cid}/Assignments`) 
-                       
-                      setAssignment({
-                           "_id": `${aid}`,
-                           "title": "",
-                           "course": `${cid}`,
-                           "until": "",
-                           "due": "",
-                           "untildt": "",
-                           "duedt": "",
-                           "points": 100,
-                           description: "",
-                           editing : false,
-                         })
-                         
+                  onClick={async () => {
+  if (assignments.find((assign) => assign._id === aid)?.editing) {
+    // --- EDIT EXISTING ASSIGNMENT ---
+    await onSaveEdit(assignment);
 
-                  }}
-                  else{
-                    { dispatch(addAssignment(assignment))
-                                  router.push(`/Courses/${cid}/Assignments`)
-                  }
-                }
-              } }> Save
+    dispatch(
+      setAssignments(
+        assignments.map((a) =>
+          a._id === assignment._id ? assignment : a
+        )
+      )
+    );
+
+    router.push(`/Courses/${cid}/Assignments`);
+  } else {
+    // --- CREATE NEW ASSIGNMENT ---
+    const newAssignment = await onSaveCreate(assignment);
+
+    dispatch(setAssignments([...assignments, newAssignment]));
+
+    router.push(`/Courses/${cid}/Assignments`);
+  }
+}}> Save
                        </Button>
 
                        <Button variant="danger" size="lg" className="me-1 float-end"

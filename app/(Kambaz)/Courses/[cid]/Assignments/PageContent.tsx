@@ -13,8 +13,10 @@ import { redirect, useParams } from "next/navigation";
 import { FaPencilAlt } from "react-icons/fa";
 import { RootState } from "../../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment, editAssignment } from "./reducer";
-import { useState } from "react";
+import { editAssignment } from "./reducer";
+import { useEffect, useState } from "react";
+import * as client from "./client";
+import { setAssignments } from "./reducer";
 
 
 
@@ -48,7 +50,18 @@ export default function PageContent() {
     const {currentUser} = useSelector((state:RootState) => state.accountReducer) 
     const {assignments} = useSelector((state:RootState) => state.assignmentsReducer)
     
-    const {cid, aid} = useParams()
+    const {cid} = useParams()
+    const onDelete = async (assignmentId: string) => {
+    await client.deleteAssignment(assignmentId);
+    dispatch(setAssignments(assignments.filter((a) => a._id !== assignmentId)));
+  };
+    const fetchAssignments = async () => {
+    const data = await client.findAssignmentsForCourse(cid as string);
+    dispatch(setAssignments(data));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
 
     const dispatch = useDispatch()
     if (!currentUser) return redirect("/Account/Signin")
@@ -72,7 +85,7 @@ export default function PageContent() {
             Close
           </Button>
           <Button variant="primary" onClick={() => {
-            dispatch(deleteAssignment(assigId))
+            onDelete(assigId)
             setShow(false)}}>
             Ok
           </Button>
@@ -96,7 +109,7 @@ export default function PageContent() {
 
           <ListGroup className="wd-lessons rounded-0">
 
-            {assignments.filter((assig) => assig.course === cid).map((assig) => <ListGroupItem action key={i++}  className="wd-lesson p-3 ps-1">
+            {assignments.map((assig) => <ListGroupItem action key={i++}  className="wd-lesson p-3 ps-1">
             <Row>
                 <Col xxl={1} className="d-flex">
                 <BsGripVertical className="me-2 fs-3 " />
@@ -132,100 +145,7 @@ export default function PageContent() {
           </Row>
           </ListGroupItem>
 
-            ) }
-
-            {/* <ListGroupItem action href="/Courses/1234/Assignments/A1 - ENV + HTML" className="wd-lesson p-3 ps-1">
-            <Row>
-                <Col xxl={1} className="d-flex">
-                <BsGripVertical className="me-2 fs-3 " />
-                <LuNotebookPen className="me-2 fs-3"/>
-                </Col>
-                <Col xxl={8}>
-                <span className="wd-title"> A1 - ENV + HTML
-                <br />Multiple modules | Not available until May 6 at 12am| <br />
-                Due May 13 at 11:59pm| 100 pts </span> 
-                </Col>
-                <Col>
-                <LessonControlButtons />
-                </Col>
-           
-          </Row>
-          </ListGroupItem>
-
-          <ListGroupItem action href="/Courses/1234/Assignments/234" className="wd-lesson p-3 ps-1">
-            <Row>
-                <Col xxl={1} className="d-flex">
-                <BsGripVertical className="me-2 fs-3 " />
-                <LuNotebookPen className="me-2 fs-3"/>
-                </Col>
-                <Col xxl={8}>
-                <span className="wd-title"> A2 - CSS + BOOTSTRAP
-                <br />Multiple modules | Not available until May 13 at 12am| <br />
-                Due May 20 at 11:59pm| 100 pts</span> 
-                </Col>
-                <Col>
-                <LessonControlButtons />
-                </Col>
-           
-          </Row>
-          </ListGroupItem>
-
-          <ListGroupItem action href="/Courses/1234/Assignments/345" className="wd-lesson p-3 ps-1">
-            <Row>
-                <Col xxl={1} className="d-flex">
-                <BsGripVertical className="me-2 fs-3 " />
-                <LuNotebookPen className="me-2 fs-3"/>
-                </Col>
-                <Col xxl={8}>
-                <span className="wd-title"> A3 - JAVASCRIPT + REACT
-                <br />Multiple modules | Not available until May 20 at 12am| <br />
-          Due May 27 at 11:59pm| 100 pts</span> 
-                </Col>
-                <Col>
-                <LessonControlButtons />
-                </Col>
-           
-          </Row>
-          </ListGroupItem>
-
-          <ListGroupItem action href="/Courses/1234/Assignments/456" className="wd-lesson p-3 ps-1">
-            <Row>
-                <Col xxl={1} className="d-flex">
-                <BsGripVertical className="me-2 fs-3 " />
-                <LuNotebookPen className="me-2 fs-3"/>
-                </Col>
-                <Col xxl={8}>
-                <span className="wd-title"> A4 - NEXT + NODE
-                <br />Multiple modules | Not available until May 28 at 12am| <br />
-          Due June 5th at 11:59pm| 100 pts</span> 
-                </Col>
-                <Col>
-                <LessonControlButtons />
-                </Col>
-           
-          </Row>
-          </ListGroupItem>
-
-          <ListGroupItem action href="/Courses/1234/Assignments/567" className="wd-lesson p-3 ps-1">
-            <Row>
-                <Col xxl={1} className="d-flex">
-                <BsGripVertical className="me-2 fs-3 " />
-                <LuNotebookPen className="me-2 fs-3"/>
-                </Col>
-                <Col xxl={8}>
-                <span className="wd-title"> A5 - REDUX
-                <br />Multiple modules | Not available until June 6 at 12am| <br />
-          Due June 13th at 11:59pm| 100 pts</span> 
-                </Col>
-                <Col>
-                <LessonControlButtons />
-                </Col>
-           
-          </Row>
-          </ListGroupItem> */}
-          
-        
-            
+            ) }                      
           </ListGroup>
         </ListGroupItem>
         </ListGroup>

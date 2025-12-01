@@ -1,66 +1,66 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-
-import { useState } from "react";
+import * as client from "../../client";
+import { useState,useEffect } from "react";
 import { FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
-import { v4 as uuidv4 } from "uuid";
-import * as db from "../../../Database"
 import { useParams } from "next/navigation";
-import { addModule, editModule, updateModule, deleteModule }
+import { setModules, editModule, updateModule }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
 
 
 export default function Modules() {
+    const fetchModules = async () => {
+    const modules = await client.findModulesForCourse(cid as string);
+    dispatch(setModules(modules));
+    console.log("CLIENT API:", client);
+  };
+  useEffect(() => {
+    fetchModules();
+  }, []);
+  
+
   
   const {cid} = useParams()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { modules } = useSelector((state: RootState) => state.modulesReducer);
 
   const [moduleName, setModuleName] = useState("");
-   const dispatch = useDispatch();
+     const dispatch = useDispatch();
+  const onCreateModuleForCourse = async () => {
+    if (!cid) return;
+    const newModule = { name: moduleName, course: cid };
+    const module1 = await client.createModuleForCourse(String(cid), newModule);
+    dispatch(setModules([...modules, module1]));
+  };
+    const onRemoveModule = async (moduleId: string) => {
+    await client.deleteModule(moduleId);
+    console.log("Deleting module:", moduleId);
+    dispatch(setModules(modules.filter((m: any) => m._id !== moduleId)));
+  };
+    const onUpdateModule = async (module: any) => {
+    await client.updateModule(module);
+    const newModules = modules.map((m: any) => m._id === module._id ? module : m );
+    dispatch(setModules(newModules));
+  };
 
 
-  // type Module = {"_id": string,
-  //   "name": string,
-  //   "description": string,
-  //   "course": string,
-  // "lessons":[{
-  //       "_id": string,
-  //       "name": string,
-  //       "description": string,
-  //       "module": string
-  //     }]}
-  
 
   return (
 
     
     <div>
-      {/* Implement Collapse All button, View Progress button, etc. */}
-      {/* <button>Collapse All</button>
-      <button>View Progress</button>
-      <select  defaultValue={"PUBLISH ALL"}>
-              <option value="PUBLISH ALL">PUBLISH ALL</option>
-              <option value="PUBLISH LATER">PUBLISH LATER</option>
-              <option value="PUBLISHED">PUBLISHED</option>
-
-            </select>
-      <button>+Module</button> */}
       <ModulesControls moduleName={moduleName} setModuleName={setModuleName} 
-      addModule={() => {
-          dispatch(addModule({ name: moduleName, course: cid }));
-          setModuleName("");
-        }}
+      addModule={onCreateModuleForCourse} 
       
       /><br /><br /><br /><br />
       <ListGroup className="rounded-0" id="wd-modules">
-      {modules.filter((module)=> module.course === cid).map((module) => 
+      {modules.map((module) => 
         <ListGroupItem  key={module._id} className="wd-module p-0 mb-5 fs-5 border-gray">
           
             <div className="wd-title p-3 ps-2 bg-secondary">
@@ -71,16 +71,13 @@ export default function Modules() {
                onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
                onKeyDown={(e) => {
                  if (e.key === "Enter") {
-                   dispatch(updateModule({ ...module, editing: false }));
-                 }
-               }}
+                    onUpdateModule({ ...module, editing: false });
+               }}}
                defaultValue={module.name}/>
                 )}
               
               
-              <ModuleControlButtons editModule={(moduleId) => dispatch(editModule(moduleId))} moduleId={module._id} deleteModule={(moduleId) => {
-                    dispatch(deleteModule(moduleId));
-                  }} /> </div>
+              <ModuleControlButtons editModule={(moduleId) => dispatch(editModule(moduleId))} moduleId={module._id} deleteModule={(moduleId) => onRemoveModule(moduleId)} /> </div>
               
               {module.lessons && (<ListGroup className="wd-lessons rounded-0">
 
@@ -104,91 +101,6 @@ export default function Modules() {
       ) }
        
       </ListGroup>
-
-
-      {/* <ListGroup className="rounded-0" id="wd-modules">
-        <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
-          <div className="wd-title p-3 ps-2 bg-secondary">
-            <BsGripVertical className="me-2 fs-3" />Week 1 <ModuleControlButtons/></div>
-          <ListGroup className="wd-lessons rounded-0">
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title"> <BsGripVertical className="me-2 fs-3" />LEARNING OBJECTIVES <LessonControlButtons /></span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" />Introduction to the course <LessonControlButtons /></ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Learn what is Web Development</ListGroupItem>
-              </ListGroup>
-
-              <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">READING</span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1">Full stack developer-chapter 1 : Introduction</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Full stack developer-chapter 2 : Creating User</ListGroupItem>
-              </ListGroup>
-
-              <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">SLIDES</span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1">Introduction to web development</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Creating a HTTP server with node js</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Creating a React Application</ListGroupItem>
-              </ListGroup>
-            
-          </ListGroup>
-        </ListGroupItem>
-
-        <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
-          <div className="wd-title p-3 ps-2 bg-secondary">Week 1 Lecture 2</div>
-          <ListGroup className="wd-lessons rounded-0">
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">LEARNING OBJECTIVES</span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1">Learn how to create user interface with HTML</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Deploy the assignment to netlify</ListGroupItem>
-              </ListGroup>
-
-              <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">SLIDES</span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1">Intro to HTML and DOM</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Formatting web content with heading</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Formatting content with lists and labels</ListGroupItem>
-              </ListGroup>
-            
-          </ListGroup>
-        </ListGroupItem>
-
-        <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
-          <div className="wd-title p-3 ps-2 bg-secondary">Week 2 Lecture 1</div>
-          <ListGroup className="wd-lessons rounded-0">
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">LEARNING OBJECTIVES</span> </ListGroupItem>
-              <ListGroup className="wd-content-modules">
-                <ListGroupItem className="wd-content-item p-3 ps-1">Adding styles</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Learning flex, position and box structure.</ListGroupItem>
-              </ListGroup>
-
-              <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">READING</span> </ListGroupItem>
-              <ListGroup className="wd-content">
-                <ListGroupItem className="wd-content-item p-3 ps-1">CSS most used-chapter 1 : Introduction</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">CSS essentials-chapter 2 : Creating complex layouts</ListGroupItem>
-              </ListGroup>
-
-              <ListGroupItem className="wd-lesson p-3 ps-1">
-              <span className="wd-title">SLIDES</span> </ListGroupItem>
-              <ListGroup className="wd-content">
-                <ListGroupItem className="wd-content-item p-3 ps-1">introduction to styling</ListGroupItem>
-                <ListGroupItem className="wd-content-item p-3 ps-1">Styling first webpage</ListGroupItem>
-
-              </ListGroup>
-            
-          </ListGroup>
-        </ListGroupItem>
-        
-
-
-      </ListGroup> */}
-
 
     </div>
 );}

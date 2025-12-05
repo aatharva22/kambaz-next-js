@@ -1,7 +1,7 @@
 "use client"
 import {usePathname} from "next/navigation"
 import Link from "next/link";
-import { ListGroup, ListGroupItem, Nav, NavItem, NavLink } from "react-bootstrap";
+import { Nav, NavItem, NavLink } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 export default function AccountNavigation() {
@@ -19,6 +19,8 @@ export default function AccountNavigation() {
          <NavLink as={Link} href={link} active={pathname.endsWith(link)}>
            {link} </NavLink> </NavItem>
      ))}
+          {currentUser && currentUser.role === "ADMIN" && (
+       <NavLink as={Link} href={`/Account/Users`}  active={pathname.endsWith('Users')}> Users </NavLink> )}
    </Nav>
       </div>
 );}

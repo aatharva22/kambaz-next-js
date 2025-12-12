@@ -24,53 +24,7 @@ export default function KambazNavigation() {
               target="_blank" href="https://www.northeastern.edu/" id="wd-neu-link">
               <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
       </ListGroupItem>
-      {/* <a href="https://www.northeastern.edu/" id="wd-neu-link" target="_blank">Northeastern</a><br/> */}
       
-      
-
-      {/* <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Account" id="wd-account-link" className= {`text-white text-decoration-none `} >
-      <FaRegCircleUser className="fs-1 text-white" /><br />Account</Link>
-      </ListGroupItem>
-
-       <ListGroupItem className="border-0 bg-white text-center">
-       <Link href="/Dashboard" id="wd-dashboard-link" className="text-danger text-decoration-none">
-         <AiOutlineDashboard className="fs-1 text-danger" />
-         <br />
-         Dashboard
-       </Link>
-     </ListGroupItem> */}
-
-      {/* <Link href="/Dashboard" id="wd-dashboard-link">Dashboard</Link><br/> */}
-
-      {/* <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Courses/1234" id="wd-course-link" className="text-white text-decoration-none">
-      <FaBook className="fs-1 text-danger" /><br />Courses</Link>
-      </ListGroupItem> */}
-      
-      {/* <Link href="/Courses/1234" id="wd-course-link">Courses</Link><br/> */}
-
-      {/* <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Calendar" id="wd-calendar-link" className="text-white text-decoration-none">
-      <FaCalendarAlt className="fs-1 text-danger" /><br />Calendar</Link>
-      </ListGroupItem> */}
-      
-
-      {/* <Link href="/Calendar" id="wd-calendar-link">Calendar</Link><br/> */}
-
-      {/* <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Inbox" id="wd-inbox-link" className="text-white text-decoration-none">
-      <CiMail className="fs-1 text-danger" /><br />Inbox</Link>
-      </ListGroupItem> */}
-
-      {/* <Link href="/Inbox" id="wd-inbox-link">Inbox</Link><br/> */}
-
-      {/* <ListGroupItem className="border-0 bg-black text-center">
-      <Link href="/Labs" id="wd-labs-link" className="text-white text-decoration-none">
-      <IoIosSettings className="fs-1 text-danger" /><br />Labs</Link>
-      </ListGroupItem> */}
-
-      {/* <Link href="/Labs" id="wd-labs-link">Labs</Link><br/> */}
 
       <ListGroupItem as={Link} href="/Account"
         className={`text-center border-0 bg-black

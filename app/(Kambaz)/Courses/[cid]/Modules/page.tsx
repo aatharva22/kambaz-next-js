@@ -50,6 +50,7 @@ export default function Modules() {
   };
 
 
+  console.log("modules:", modules);
 
   return (
 
@@ -60,6 +61,9 @@ export default function Modules() {
       
       /><br /><br /><br /><br />
       <ListGroup className="rounded-0" id="wd-modules">
+      
+
+
       {modules.map((module) => 
         <ListGroupItem  key={module._id} className="wd-module p-0 mb-5 fs-5 border-gray">
           

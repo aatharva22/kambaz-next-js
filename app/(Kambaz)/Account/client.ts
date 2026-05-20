@@ -5,7 +5,7 @@ export const USERS_API = `${HTTP_SERVER}/api/users`;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const signin = async (credentials: any) => {
-  const response = await axiosWithCredentials.post( `${USERS_API}/signin`, credentials );
+  const response = await axiosWithCredentials.post(`${USERS_API}/signin`, credentials);
   return response.data;
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,32 +31,23 @@ export const findAllUsers = async () => {
   return response.data;
 };
 export const findUsersByRole = async (role: string) => {
-  const response = await
-    axios.get(`${USERS_API}?role=${role}`);
+  const response = await axiosWithCredentials.get(`${USERS_API}?role=${role}`);
   return response.data;
 };
 export const findUsersByPartialName = async (name: string) => {
-  const response = await axios.get(`${USERS_API}?name=${name}`);
+  const response = await axiosWithCredentials.get(`${USERS_API}?name=${name}`);
   return response.data;
 };
 export const findUserById = async (id: string) => {
-  const response = await axios.get(`${USERS_API}/${id}`);
+  const response = await axiosWithCredentials.get(`${USERS_API}/${id}`);
   return response.data;
 };
 export const deleteUser = async (userId: string) => {
-  const response = await axios.delete( `${USERS_API}/${userId}` );
+  const response = await axiosWithCredentials.delete(`${USERS_API}/${userId}`);
   return response.data;
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createUser = async (user: any) => {
-  const response = await axios.post(`${USERS_API}`, user);
+  const response = await axiosWithCredentials.post(`${USERS_API}`, user);
   return response.data;
 };
-
-
-
-
-
-
-
-

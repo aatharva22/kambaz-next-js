@@ -15,13 +15,13 @@
 </p>
 
 <p align="center">
-  <b>🌐 Live:</b> <a href="https://kambaz-next-js-xhy3.vercel.app">kambaz-next-js-xhy3.vercel.app</a> ·
-  <b>🛠️ Backend repo:</b> <a href="https://github.com/aatharva22/kambaz-node-server-app">kambaz-node-server-app</a>
+  <b>Live:</b> <a href="https://kambaz-next-js-xhy3.vercel.app">kambaz-next-js-xhy3.vercel.app</a> ·
+  <b>Backend repo:</b> <a href="https://github.com/aatharva22/kambaz-node-server-app">kambaz-node-server-app</a>
 </p>
 
 ---
 
-## ✨ Why this project
+## Why this project
 
 Most student LMS clones stop at a styled mockup. **Kambaz** is wired all the way through:
 
@@ -33,7 +33,7 @@ Most student LMS clones stop at a styled mockup. **Kambaz** is wired all the way
 
 ---
 
-## 🧩 What's in the box
+## What's in the box
 
 ```
 ┌──────────────────────┐         credentialed CORS         ┌────────────────────────┐
@@ -48,7 +48,7 @@ Most student LMS clones stop at a styled mockup. **Kambaz** is wired all the way
 
 ---
 
-## 🗺️ Feature map
+## Feature map
 
 | Area | Routes | What it does |
 |---|---|---|
@@ -62,7 +62,7 @@ Most student LMS clones stop at a styled mockup. **Kambaz** is wired all the way
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 app/
@@ -90,7 +90,7 @@ app/
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 **Prerequisites:** Node 18+, and the [Kambaz API](https://github.com/aatharva22/kambaz-node-server-app) running locally (default `http://localhost:4000`).
 
@@ -120,7 +120,7 @@ NEXT_PUBLIC_HTTP_SERVER=http://localhost:4000
 
 ---
 
-## ☁️ Deployment
+## Deployment
 
 Deployed on **Vercel**. To deploy your own:
 
@@ -133,7 +133,7 @@ Deployed on **Vercel**. To deploy your own:
 
 ---
 
-## 🛣️ Roadmap
+## Roadmap
 
 - [ ] Real loading + error UI states (Suspense + error boundaries instead of ad-hoc spinners).
 - [ ] React Query / RTK Query for cache + invalidation; drop hand-rolled `useEffect` data fetching.
@@ -144,7 +144,7 @@ Deployed on **Vercel**. To deploy your own:
 
 ---
 
-## 🧰 Tech stack
+## Tech stack
 
 `Next.js 16 (App Router, Turbopack)` · `React 19` · `TypeScript 5` · `Redux Toolkit` · `react-redux` · `axios` · `Tailwind CSS 4` · `react-bootstrap` · `Bootstrap 5` · `react-icons`
 

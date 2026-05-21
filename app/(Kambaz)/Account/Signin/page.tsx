@@ -23,10 +23,10 @@ return (
       <h1>Sign in</h1>
       <FormControl defaultValue={credentials.username}
              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-             className="mb-2" placeholder="username" id="wd-username" />
+             className="mb-2" placeholder="ada" id="wd-username" />
       <FormControl defaultValue={credentials.password}
              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-             className="mb-2" placeholder="password" type="password" id="wd-password" />
+             className="mb-2" placeholder="123" type="password" id="wd-password" />
       <Button onClick={signin} id="wd-signin-btn" className="w-100" > Sign in </Button>
       <Link id="wd-signup-link" href="/Account/Signup"> Sign up </Link>
     </div>

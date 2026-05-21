@@ -5,14 +5,14 @@
   Dashboards, courses, modules, assignments, people, and authenticated profiles — built on the Next.js App Router.
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white"/>
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=000"/>
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white"/>
   <img alt="Redux Toolkit" src="https://img.shields.io/badge/Redux%20Toolkit-2-764ABC?logo=redux&logoColor=white"/>
   <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white"/>
   <img alt="Vercel" src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white"/>
-</p>
+</p> -->
 
 <p align="center">
   <b>Live:</b> <a href="https://kambaz-next-js-xhy3.vercel.app">kambaz-next-js-xhy3.vercel.app</a> ·
